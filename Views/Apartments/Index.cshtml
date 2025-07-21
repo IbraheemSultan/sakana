@@ -1,0 +1,57 @@
+﻿@model IEnumerable<sakanat.Models.Apartment>
+@using sakanat.Models
+@{
+    ViewData["Title"] = "الشقق المعروضة";
+}
+
+<h2>الشقق المتاحة</h2>
+
+<!-- نموذج الفلترة -->
+<form asp-action="Index" method="get" class="row g-2 mb-4">
+    <div class="col-md-4">
+        <input type="text" name="searchAddress" class="form-control" placeholder="ابحث بالمنطقة..." />
+    </div>
+    <div class="col-md-3">
+        <select name="genderType" class="form-select">
+            <option value="">-- نوع الشقة --</option>
+            <option value="0">ولاد</option>
+            <option value="1">بنات</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary">فلتر</button>
+    </div>
+</form>
+
+@if (User.IsInRole("Admin"))
+{
+    <a asp-action="Create" class="btn btn-success mb-3">إضافة شقة جديدة</a>
+}
+
+<!-- عرض الشقق -->
+<div class="row">
+    @foreach (var apartment in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                @if (apartment.Images.Any())
+                {
+                    <img src="@Url.Content($"~/images/{apartment.Images.First().ImageUrl}")" class="card-img-top" style="height: 200px; object-fit: cover;" />
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@apartment.Address</h5>
+                    <p class="card-text">السعر: @apartment.Price ج.م</p>
+                    <p class="card-text">النوع: @(apartment.GenderType == GenderType.Male ? "ولاد" : "بنات")</p>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@apartment.Id" class="btn btn-sm btn-warning">تعديل</a>
+                        <form asp-action="Delete" asp-route-id="@apartment.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger">حذف</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

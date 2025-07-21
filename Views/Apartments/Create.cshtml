@@ -1,0 +1,61 @@
+﻿@model sakanat.Models.Apartment
+
+@{
+    ViewData["Title"] = "إضافة شقة جديدة";
+}
+
+<h2>إضافة شقة جديدة</h2>
+
+<form asp-action="Create" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label asp-for="Title">عنوان الشقة</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">الوصف</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price">السعر</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address">العنوان</label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RoomCount">عدد الغرف</label>
+        <input asp-for="RoomCount" class="form-control" />
+        <span asp-validation-for="RoomCount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenderType">النوع</label>
+        <select asp-for="GenderType" class="form-control" asp-items="Html.GetEnumSelectList<GenderType>()">
+            <option value="">اختر النوع</option>
+        </select>
+        <span asp-validation-for="GenderType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>صور الشقة</label>
+        <input type="file" name="NewImages" multiple class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">حفظ</button>
+    <a asp-action="Index" class="btn btn-secondary">رجوع</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
