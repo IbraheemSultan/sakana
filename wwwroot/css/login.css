@@ -24,7 +24,7 @@ section {
     background-size: cover;
     width: 100vw;
     height: 100vh;
-    color: white;
+    color: white !important;
 }
 
 .container {
@@ -41,6 +41,7 @@ section {
     border-radius: 1rem;
     text-align: center;
     width: 500px;
+    ;
 }
 
     .card h1 {
@@ -79,7 +80,7 @@ section {
         margin-right: .5rem;
         border-top-left-radius: .5rem;
         border-bottom-left-radius: .5rem;
-        color: white;
+        color: white !important;
     }
 
         .card form input[type="email"]:focus,
@@ -118,6 +119,8 @@ section {
     background-color: var(--bg-input);
     border-radius: .5rem;
     margin-bottom: 1rem;
+    position:relative;
+    
 }
 
 
@@ -178,8 +181,14 @@ input:-webkit-autofill {
     direction: rtl;
 }
 
-    .phoneInput:focus {
-        outline: none;
-        background-color: var(--bg-input);
-        color: white;
-    }
+
+/*  reset eye for password in browser */
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-clear-button {
+    display: none !important;
+    pointer-events: none;
+}
+

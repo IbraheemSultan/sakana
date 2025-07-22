@@ -4,12 +4,13 @@
 }
 
 
+
 <link rel="stylesheet" href="~/css/login.css" />
 
 
  <section class="register-section">
         <div class="container">
-              <div class="card">
+              <div class="card text-white">
                  <h1>Assiut Stay</h1>
                 @* <h2> انشاء حساب</h2> *@
                  <h2 class="text-center mb-4">تسجيل حساب جديد</h2>
@@ -46,26 +47,49 @@
                     <div class="mb-3 password">
                         @* <label asp-for="Password" class="form-label"></label> *@
                         <i class="bi bi-lock"></i>
-                        <input asp-for="Password" minlength="8" class="form-control" placeholder=" كلمة المرور"
+                        <input asp-for="Password" minlength="8"  id="passwordInput" class="form-control" placeholder=" كلمة المرور"
                             required/>
+                            <i class="bi bi-eye-slash " id="togglePassword" style="cursor:pointer; position:absolute; left:0; "></i> 
                     </div>
                         <span asp-validation-for="Password"  class="text-danger mb-4"></span>
 
                     <div class="mb-3 password">
                         @* <label asp-for="ConfirmPassword" class="form-label"></label> *@
                         <i class="bi bi-lock"></i>
-                        <input asp-for="ConfirmPassword" minlength="8" class="form-control" placeholder="تاكيد كلمة المرور"
+                        <input asp-for="ConfirmPassword" minlength="8"  id="passwordInputConfirm" class="form-control text-white" placeholder="تاكيد كلمة المرور"
                             required />
+                            <i class="bi bi-eye-slash " id="togglePasswordConfirm" style="cursor:pointer; position:absolute; left:0; "></i> 
                     </div>
                         <span asp-validation-for="ConfirmPassword" class="text-danger mb-4"></span>
 
-                    <input type="submit" class=" w-100" value="انشاء حساب  "></input>
+                    <input type="submit" class=" w-100 text-white" value="انشاء حساب  "></input>
                 </form>
 
                 <p> هل تمتلك حساب بالفعل ؟ <a href="/Account/Login" class="regist"> سجل الدخول </a></p>
              </div>
         </div>
     </section>
+
+    <script>
+document.getElementById("togglePassword").addEventListener("click", function () {
+    const passwordInput = document.getElementById("passwordInput");
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+
+    // تغيير الأيقونة
+    this.classList.toggle("bi-eye");
+    this.classList.toggle("bi-eye-slash");
+});
+document.getElementById("togglePasswordConfirm").addEventListener("click", function () {
+    const passwordInput = document.getElementById("passwordInputConfirm");
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+
+    // تغيير الأيقونة
+    this.classList.toggle("bi-eye");
+    this.classList.toggle("bi-eye-slash");
+});
+</script>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
