@@ -1,0 +1,185 @@
+﻿body,
+html,
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: hsl(43, 98%, 51%);
+    --bg-card: hsl(43, 98%, 3%);
+    --bg-input: hsl(43, 6%, 10%);
+    /* font-size: 1vw; */
+}
+/* Register*/
+
+.register-section {
+    height: auto !important;
+    padding: 4rem 0;
+}
+/*  login  */
+section {
+    background: url('/images/main/bg.png' ) no-repeat center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+}
+
+.card {
+    background-color: var(--bg-card);
+    padding: 3rem;
+    border-radius: 1rem;
+    text-align: center;
+    width: 500px;
+}
+
+    .card h1 {
+        color: var(--main-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .card h2 {
+        margin-bottom: 1rem;
+    }
+
+/*.error-message{
+    position:absolute;
+}*/
+.email {
+    font-size: 2rem;
+}
+
+.card form {
+    display: flex;
+    flex-direction: column;
+}
+
+    .card form input[type="email"],
+    .card form input[type="password"],
+    .card form input[type="text"],
+    .nationalId input,
+    .phoneNumber input {
+        border: none;
+        background-color: var(--bg-input);
+        width: 100%;
+        vertical-align: bottom;
+        padding-right: .5rem;
+        padding: 1rem 0;
+        margin-right: .5rem;
+        border-top-left-radius: .5rem;
+        border-bottom-left-radius: .5rem;
+        color: white;
+    }
+
+        .card form input[type="email"]:focus,
+        .card form input[type="password"]:focus,
+        .card form input[type="text"]:focus
+        .phoneNumber input:focus,
+        .nationalId input:focus {
+            outline: none;
+        }
+
+    .card form .form-control {
+        border: none;
+        /*        background-color: var(--bg-input);*/
+        /*        color: white;*/
+        padding: 1rem 0.5rem;
+        /*        border-radius: 0.5rem;*/
+        box-shadow: none;
+        /*        direction:ltr*/
+    }
+
+/*.card form .form-control:focus {
+            outline: none;
+            box-shadow: none;*/ /* يلغي تأثير Bootstrap */
+/*padding: 1rem 0.5rem;
+        }*/
+
+.email,
+.password,
+.name,
+.phoneNumber,
+.nationalId {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: var(--bg-input);
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+}
+
+
+    .email i,
+    .password i,
+    .name i,
+    .nationalId i,
+    .phoneNumber i {
+        width: 20%;
+    }
+
+    .email i {
+        font-size: 1.5rem;
+    }
+
+.register-email i {
+    font-size: 1rem;
+}
+
+.card input[type="submit"] {
+    width: 100%;
+    padding: .7rem;
+    background-color: var(--main-color);
+    border: none;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+}
+
+    .card input[type="submit"]:focus {
+        outline: none;
+    }
+
+.card p {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.forget {
+    color: white;
+    text-decoration: none;
+}
+
+.regist {
+    color: var(--main-color);
+}
+
+
+/* Register */
+
+input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px rgb(113, 117, 129) inset !important;
+    -webkit-text-fill-color: #000 !important;
+    padding-right: .5rem !important;
+}
+
+
+.phoneInput{
+    direction:rtl;
+}
+
+    .phoneInput:focus {
+        outline: none;
+        background-color:var(--bg-input);
+        color: white;
+    }

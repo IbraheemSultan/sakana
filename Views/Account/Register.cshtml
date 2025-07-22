@@ -3,48 +3,71 @@
     ViewData["Title"] = "تسجيل حساب جديد";
 }
 
-<h2 class="text-center mb-4">تسجيل حساب جديد</h2>
 
-<form asp-action="Register" method="post">
-    <div class="mb-3">
-        <label asp-for="FullName" class="form-label"></label>
-        <input asp-for="FullName" class="form-control" />
-        <span asp-validation-for="FullName" class="text-danger"></span>
-    </div>
+<link rel="stylesheet" href="~/css/login.css" />
 
-    <div class="mb-3">
-        <label asp-for="NationalId" class="form-label"></label>
-        <input asp-for="NationalId" class="form-control" />
-        <span asp-validation-for="NationalId" class="text-danger"></span>
-    </div>
 
-    <div class="mb-3">
-        <label asp-for="PhoneNumber" class="form-label"></label>
-        <input asp-for="PhoneNumber" class="form-control" />
-        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-    </div>
+ <section class="register-section">
+        <div class="container">
+              <div class="card">
+                 <h1>Assiut Stay</h1>
+                @* <h2> انشاء حساب</h2> *@
+                 <h2 class="text-center mb-4">تسجيل حساب جديد</h2>
 
-    <div class="mb-3">
-        <label asp-for="Email" class="form-label"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
+                 <form asp-action="Register" method="post">
+                    <div class="mb-3 name">
+                        @* <label asp-for="FullName" class="form-label"></label> *@
+                        <i class="bi bi-person"></i>
+                        <input asp-for="FullName" class="form-control" placeholder="اسم المستخدم " required/>
+                    </div>
+                        <span asp-validation-for="FullName" class="text-danger mb-4"></span>
 
-    <div class="mb-3">
-        <label asp-for="Password" class="form-label"></label>
-        <input asp-for="Password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
+                    <div class="mb-3 nationalId">
+                        @* <label asp-for="NationalId" class="form-label"></label> *@
+                        <i class="bi bi-person-vcard"></i>
+                        <input asp-for="NationalId" class="form-control" placeholder="الرقم القومي " required />
+                    </div>
+                        <span asp-validation-for="NationalId" class="text-danger mb-4"></span>
 
-    <div class="mb-3">
-        <label asp-for="ConfirmPassword" class="form-label"></label>
-        <input asp-for="ConfirmPassword" class="form-control" />
-        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-    </div>
+                    <div class="mb-3 phoneNumber">
+                        @* <label asp-for="PhoneNumber" class="form-label"></label> *@
+                        <i class="bi bi-telephone"></i>
+                        <input asp-for="PhoneNumber" class="form-control  phoneInput"  placeholder="رقم الهاتف " required/>
+                    </div>
+                        <span asp-validation-for="PhoneNumber" class="text-danger mb-4"></span>
 
-    <button type="submit" class="btn btn-primary w-100">تسجيل</button>
-</form>
+                    <div class="mb-3 email register-email">
+                        @* <label asp-for="Email" class="form-label"></label> *@
+                        <i class="bi bi-envelope"></i>
+                        <input asp-for="Email" class="form-control" placeholder="البريد الالكتروني " required />
+                    </div>
+                        <span asp-validation-for="Email" class="text-danger mb-4"></span>
+
+                    <div class="mb-3 password">
+                        @* <label asp-for="Password" class="form-label"></label> *@
+                        <i class="bi bi-lock"></i>
+                        <input asp-for="Password" minlength="8" class="form-control" placeholder=" كلمة المرور"
+                            required/>
+                    </div>
+                        <span asp-validation-for="Password"  class="text-danger mb-4"></span>
+
+                    <div class="mb-3 password">
+                        @* <label asp-for="ConfirmPassword" class="form-label"></label> *@
+                        <i class="bi bi-lock"></i>
+                        <input asp-for="ConfirmPassword" minlength="8" class="form-control" placeholder="تاكيد كلمة المرور"
+                            required />
+                    </div>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger mb-4"></span>
+
+                    <input type="submit" class=" w-100" value="انشاء حساب  "></input>
+                </form>
+
+                <p> هل تمتلك حساب بالفعل ؟ <a href="/Account/Login" class="regist"> سجل الدخول </a></p>
+             </div>
+        </div>
+    </section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
