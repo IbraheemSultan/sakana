@@ -174,12 +174,12 @@ input:-webkit-autofill {
 }
 
 
-.phoneInput{
-    direction:rtl;
+.phoneInput {
+    direction: rtl;
 }
 
     .phoneInput:focus {
         outline: none;
-        background-color:var(--bg-input);
+        background-color: var(--bg-input);
         color: white;
     }
