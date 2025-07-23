@@ -253,10 +253,6 @@ namespace sakanat.Migrations
                     b.Property<int>("GenderType")
                         .HasColumnType("int");
 
-                    b.Property<string>("PhoneNumper")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
