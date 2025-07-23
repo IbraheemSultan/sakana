@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("sakanat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80983dd78f6e4e31dc4842a043547bd5690bd84d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+865079a4380c57b34feee5e52420b8f2938caa3e")]
 [assembly: System.Reflection.AssemblyProductAttribute("sakanat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("sakanat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
