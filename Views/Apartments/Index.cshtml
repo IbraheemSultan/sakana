@@ -71,7 +71,7 @@
                 </select>
 
 
-                <button  type="submit" class="submit btn btn-warning  btn-hover border-0 p-3 rounded-3  me-3">بحث</button>
+                <button  type="submit" class="submit btn btn-warning  btn-hover border-0 p-3 rounded-3 p-3  me-3">بحث</button>
             </form>
 
 
@@ -125,7 +125,7 @@
                 <div class="card-body p-3">
                     <h5 class="card-title text-black mb-4">@apartment.Address</h5>
                     <p class="card-text text-dark">النوع: @(apartment.GenderType == GenderType.Male ? "ولاد" : "بنات")</p>
-                    <p class="text-dark"> @apartment.RoomCount غرفة</p>
+                    <p class="text-dark"> @apartment.RoomCount غرف</p>
                     <p class="card-text main-color ">السعر: @apartment.Price ج.م</p>
 
                     @if (User.IsInRole("Admin"))

@@ -89,6 +89,7 @@ section {
         .phoneNumber input:focus,
         .nationalId input:focus {
             outline: none;
+            background-color: var(--bg-input);
         }
 
     .card form .form-control {
@@ -169,13 +170,14 @@ section {
 
 
 /* Register */
-
-input:-webkit-autofill {
-    box-shadow: 0 0 0px 1000px rgb(113, 117, 129) inset !important;
-    -webkit-text-fill-color: #000 !important;
-    padding-right: .5rem !important;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--bg-input) inset !important;
+    -webkit-text-fill-color: white !important;
+    caret-color: white; /* لون المؤشر */
 }
-
 
 .phoneInput {
     direction: rtl;
@@ -193,6 +195,3 @@ input[type="password"]::-webkit-clear-button {
 }
 
 
-input::placeholder{
-    color:blue;
-}
