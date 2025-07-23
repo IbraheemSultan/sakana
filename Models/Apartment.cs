@@ -22,6 +22,8 @@ public class Apartment
     public int RoomCount { get; set; }
 
     [Required]
+    public string PhoneNumper { get; set; }
+    [Required]
     public GenderType GenderType { get; set; } // فلتر بنات/ولاد
 
     public DateTime CreatedAt { get; set; }
