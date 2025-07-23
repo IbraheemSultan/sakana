@@ -298,7 +298,6 @@ D:\Ibraheem\sakanat (1)\sakanat\obj\Debug\net8.0\staticwebassets.build.endpoints
 D:\Ibraheem\sakanat (1)\sakanat\obj\Debug\net8.0\sakanat.csproj.Up2Date
 D:\Ibraheem\sakanat (1)\sakanat\obj\Debug\net8.0\sakanat.genruntimeconfig.cache
 D:\Ibraheem\sakanat (1)\sakanat\obj\Debug\net8.0\ref\sakanat.dll
-D:\Ibraheem\sakanat (1)\sakanat\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\New folder (5)\bin\Debug\net8.0\appsettings.Development.json
 E:\New folder (5)\bin\Debug\net8.0\appsettings.json
 E:\New folder (5)\bin\Debug\net8.0\sakanat.staticwebassets.runtime.json
@@ -449,3 +448,4 @@ E:\New folder (5)\obj\Debug\net8.0\refint\sakanat.dll
 E:\New folder (5)\obj\Debug\net8.0\sakanat.pdb
 E:\New folder (5)\obj\Debug\net8.0\sakanat.genruntimeconfig.cache
 E:\New folder (5)\obj\Debug\net8.0\ref\sakanat.dll
+D:\Ibraheem\sakanat (1)\sakanat\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
