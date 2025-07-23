@@ -20,7 +20,7 @@ html,
 
 /*  */
 
-section {
+.main {
     height: 100vh;
     background: url('/images/main/bg.png' ) no-repeat center;
     background-size: cover;
@@ -46,4 +46,11 @@ section {
     :root{
         font-size:2vw;
     }
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
