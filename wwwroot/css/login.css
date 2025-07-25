@@ -94,7 +94,7 @@ section {
 
     .card form .form-control {
         border: none;
-        /*        background-color: var(--bg-input);*/
+/*        background-color: var(--bg-input) !important;*/
         /*        color: white;*/
         padding: 1rem 0.5rem;
         /*        border-radius: 0.5rem;*/
@@ -102,11 +102,9 @@ section {
         /*        direction:ltr*/
     }
 
-/*.card form .form-control:focus {
-            outline: none;
-            box-shadow: none;*/ /* يلغي تأثير Bootstrap */
-/*padding: 1rem 0.5rem;
-        }*/
+        .card form .form-control:focus {
+            background-color: var(--bg-input) !important;
+        }
 
 .email,
 .password,
@@ -117,7 +115,7 @@ section {
     justify-content: center;
     align-items: center;
     align-content: center;
-    background-color: var(--bg-input);
+    background-color: var(--bg-input) !important;
     border-radius: .5rem;
     margin-bottom: 1rem;
     position:relative; 

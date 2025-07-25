@@ -5,152 +5,168 @@
 }
 
 
-<link rel="stylesheet" href="~/css/main.css" />
+<link rel="stylesheet" href="~/css/hero.css" />
+@* <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous"> *@
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-
-<section class="main vh-100 d-flex justify-content-center align-items-center text-center">
+<section class=" vh-100 d-flex justify-content-center align-items-center text-center hero">
     <div class="container">
         <div class="title mb-4">
-            <h1 class="display-4 mb-3">
+            <h1 class="display-3 mb-3">
                 مرحبًا بكم في 
                 <span class="main-color fw-bold">Assiut Stay</span>
             </h1>
          
         </div>
 
-        <p class="fs-4 ">
+        <p class="fs-5 ">
             لا تضيع وقتك في البحث... اختر سكنك المثالي وابدأ حياتك الجامعية بثقة.
         </p>
 
         <div class="btns mt-5 d-flex justify-content-center flex-wrap">
             
-                <a class="btn btn-warning  btn-hover border-0 text-center  fs-5 mb-4 rounded-3 ms-md-5 p-3 ps-4 pe-4 text-white"
+                <a class="btn btn-warning  btn-hover border-0 text-center  fs-5 mb-4 rounded-3 ms-md-5 p-3 ps-4 pe-4 text-black"
                     href="#sect"> شقتك في انتظارك احجز الان ...</a>
         </div>
     </div>
 </section>
 
 
-<section id="sect" >
-        <div class="container text-black text-center">
-
-            <h2 class="main-color display-2 fw-bold mb-4">Assiut Stay</h2>
-            <h2 class="fs-5 mb-5">الشقق المتاحة للإيجار</h2>
 
 
-<!-- نموذج الفلترة -->
-@* <form asp-action="Index" method="get" class="row g-2 mb-4 justify-content-center">
-    <div class="col-md-4  ">
-        <input type="text" name="searchAddress" class="form-control " placeholder="ابحث بالعنوان أو الموقع..." />
-    </div>
-    <div class="col-md-3">
-        <select name="genderType" class="form-select ">
-            <option value="" hidden>-- نوع الشقة --</option>
-            <option value="0">ولاد</option>
-            <option value="1">بنات</option>
-        </select>
-    </div>
-    <div class="col-md-2">
-        <button type="submit" class="btn btn-primary">فلتر</button>
-    </div>
-</form> *@
+<section class=" pb-5 "  >
+        <div class="container text-black text-center ">
 
+            
+            <h2 class="main-color display-4 p-4 fw-bold mb-4">الشقق المتاحة للإيجار</h2>
 
             <form asp-action="Index" method="get" class="filter  mb-4">
-                <input type="text" name="searchAddress" class="filter-search text-bg-light border-0 p-3 rounded-3  mb-4 "
+                <input type="text" name="searchAddress" class="filter-search text-bg-light  text-black border-0 p-3 rounded-3  mb-4 "
                     placeholder=" ابحث بالموقع ... ">
 
-
-                <select name="genderType"  class=" text-bg-light  p-3 rounded-3  me-3 ">
+                <select name="genderType"  class=" text-bg-light text-black  p-3 rounded-3  me-3 ">
                     <option value="" hidden class="text-bg-light fs-5"> النوع </option>
-                    <option value="0" class="text-bg-light fs-5" style="padding-bottom: 540px !important;"> ولاد
+                    <option value="0" class="text-black fs-5" style="padding-bottom: 540px !important;"> ولاد
                     </option>
-                    <option value="1" class="text-bg-light fs-5"> بنات </option>
+                    <option value="1" class="text-black fs-5"> بنات </option>
                 </select>
 
 
-                <button  type="submit" class="submit btn btn-warning  btn-hover border-0 p-3 rounded-3 p-3  me-3">بحث</button>
+                <button  type="submit" class="submit btn btn-warning  btn-hover border-0 p-3 rounded-3  me-3">بحث</button>
+
+
+             
             </form>
 
 
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Create" class="btn btn-success p-2 mb-3">إضافة شقة جديدة</a>
+            }
 
 
 
+           <div class="cards row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 text-end m-0">
+            @foreach (var apartment in Model)
+            {
+                var carouselId = $"carousel_{apartment.Id}";
+                <div class="col">
+                    <div class="card main-bg rounded-3">
 
+                        @if (apartment.Images != null && apartment.Images.Any())
+                        {
+                            <div id="@carouselId" class="carousel slide  mb-3" data-bs-ride="carousel">
+                                <div class="carousel-inner rounded-3 w-100" style="height: 17rem;">
+                                    @for (int i = 0; i < apartment.Images.Count; i++)
+                                    {
+                                        var img = apartment.Images[i];
+                                        <div class="h-100  carousel-item @(i == 0 ? "active" : "")  ">
+                                            <img src="@Url.Content(img.ImageUrl)" class="img-fluid w-100  h-100 object-fit-cover  " />
+                                        </div>
+                                    }
+                                </div>
 
-@if (User.IsInRole("Admin"))
-{
-    <a asp-action="Create" class="btn btn-success mb-3">إضافة شقة جديدة</a>
-}
+                                @if (apartment.Images.Count > 1)
+                                {
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#@carouselId" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#@carouselId" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </button>
+                                }
+                            </div>
+                        }
 
-<!-- عرض الشقق -->
-@* <div class="row">
-    @foreach (var apartment in Model)
-    {
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                @if (apartment.Images.Any())
-                {
-                    <img src="@Url.Content($"~/images/{apartment.Images.First().ImageUrl}")" class="card-img-top" style="height: 200px; object-fit: cover;" />
-                }
-                <div class="card-body">
-                    <h5 class="card-title">@apartment.Address</h5>
-                    <p class="card-text">السعر: @apartment.Price ج.م</p>
-                    <p class="card-text">النوع: @(apartment.GenderType == GenderType.Male ? "ولاد" : "بنات")</p>
+                        <div class="card-body p-3">
+                            <h5 class="card-title fs-4   main-color mb-3">@apartment.Address</h5>
+                            <p class="text-light"> @apartment.Description </p>
+                            <ul class="list-unstyled">
+                            
+                            <li class="text-light"> المنطقة : @apartment.Title </li>
+                            <li class="text-ligh">عدد الغرف : @apartment.RoomCount </li>
+                            <li class="text-ligh">النوع: @(apartment.GenderType == GenderType.Male ? "ولاد" : "بنات")</li>
+                            <li class="text-ligh">السعر: <span class="main-color fw-bold"> @apartment.Price </span>  ج.م\ شهر</li>
+                            </ul>
+                            <a href="https://wa.me/@apartment.PhoneNumper" target="_blank" class="btn btn-danger"> احجز الان </a>
 
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@apartment.Id" class="btn btn-sm btn-warning">تعديل</a>
-                        <form asp-action="Delete" asp-route-id="@apartment.Id" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-sm btn-danger">حذف</button>
-                        </form>
-                    }
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@apartment.Id" class="btn btn-warning">تعديل</a>
+                                <form asp-action="Delete" asp-route-id="@apartment.Id" method="post" style="display:inline;">
+                                    <button type="submit" class="btn  btn-danger">حذف</button>
+                                </form>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    }
-</div> *@
+   
 
-<div class="cards row row-cols-1  row-cols-md-2 row-cols-lg-3 g-5  text-end m-0 ">
-    @foreach (var apartment in Model)
-    {
-        <div class="col">
-            <div class="card   rounded-3">
-                @if (apartment.Images.Any())
-                {
-                    <img src="@Url.Content($"~/images/{apartment.Images.First().ImageUrl}")" class="d-block  w-100 rounded-3 mb-4 " style="height: 13rem;" />
-                }
-                <div class="card-body p-3">
-                    <h5 class="card-title text-black mb-4">@apartment.Address</h5>
-                    <p class="card-text text-dark">النوع: @(apartment.GenderType == GenderType.Male ? "ولاد" : "بنات")</p>
-                    <p class="text-dark"> @apartment.RoomCount غرفة</p>
-                    <p class="card-text main-color ">السعر: @apartment.Price ج.م</p>
 
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@apartment.Id" class="btn btn-sm btn-warning">تعديل</a>
-                        <form asp-action="Delete" asp-route-id="@apartment.Id" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-sm btn-danger">حذف</button>
-                        </form>
-                    }
-                </div>
+      </div>
+</section>
+
+      <footer class="bg-black text-center p-3">
+        <h2 class="main-color display-5 fw-bold mb-2">Assiut Stay</h2>
+        <p class="fs-3 pb-2 ">نحن شريكك الموثوق لتحقيق حلم السكن المثالي.</p>
+        <div class="footer-bottom d-flex flex-column flex-md-row flex-wrap justify-content-around pt-2 ">
+            <div class="area ">
+                <h3>المناطق التي نغطيها</h3>
+                <ul class="list-unstyled p-2">
+
+                    <li class="text-secondary p-1">مصنع سيد </li>
+                    <li class="text-secondary p-1">سيتي </li>
+                    <li class="text-secondary p-1">فريال </li>
+                    <li class="text-secondary p-1">الجمهورية </li>
+                    <li class="text-secondary p-1">الوليدية</li>
+                    <li class="text-secondary p-1">الأزهر </li>
+
+                </ul>
+            </div>
+            <div class="services ">
+
+                <h3>الخدمات</h3>
+                <ul class="list-unstyled list-unstyled p-2">
+
+                    <li class="text-secondary p-1">استئجار الشقة</li>
+                    <li class="text-secondary p-1">إدارة الممتلكات</li>
+                    <li class="text-secondary p-1">24/7 دعم</li>
+                    <li class="text-secondary p-1">الحجز عن طريق الواتساب</li>
+                </ul>
+            </div>
+            <div class="contact ">
+                <h3>تواصل معانا</h3>
+                <ul class="list-unstyled list-unstyled p-2">
+                    <li class="text-secondary p-1 "> واتساب :   +201027039653</li>
+                    <li class="text-secondary p-1">متاحين 24/7</li>
+                    <li class="text-secondary p-1">اسيوط , مصر</li>
+                </ul>
             </div>
         </div>
-    }
-</div>
+        <hr>
 
-
-
-
-
-
-
-
-
-
-
-
-          </div>
-    </section>
+        <div class="signture text-secondary">
+            <p class="text-secondary">Copyright © 2025 Assiut Stay Co., Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>

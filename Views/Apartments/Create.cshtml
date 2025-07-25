@@ -3,56 +3,81 @@
 @{
     ViewData["Title"] = "إضافة شقة جديدة";
 }
+<link href="~/css/create.css" rel="stylesheet" />
 
-<h2>إضافة شقة جديدة</h2>
+<div class="head main-bg text-center pt-5 pb-4">
+        <h2 class="fw-bold main-color"> إضافة شقة جديدة</h2>
+        <p class="placeholder-color">املأ البيانات لإضافة شقتك إلي قائمة الشقق المتاحة </p>
+    </div>
 
-<form asp-action="Create" enctype="multipart/form-data" method="post">
-    <div class="form-group">
+<section class="mt-5 mb-5 " >
+
+<form asp-action="Create" enctype="multipart/form-data" method="post" class="hero d-flex flex-wrap p-3 main-bg rounded-4  m-auto ">
+     <div class=" rounded-2 p-2 w-100">
         <label asp-for="Title">عنوان الشقة</label>
-        <input asp-for="Title" class="form-control" />
+                
+        <input asp-for="Title" class="rounded-2 p-2 w-100" placeholder=" مثال : شقة فاخرة في الجامعه " />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+    <div class=" rounded-2 p-2 w-100 ">
         <label asp-for="Description">الوصف</label>
-        <textarea asp-for="Description" class="form-control"></textarea>
+        <textarea asp-for="Description" class=" rounded-2 p-2  w-100" cols="30" rows="5" placeholder=" ادخل تفاصيل الشقة... "></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Price">السعر</label>
-        <input asp-for="Price" class="form-control" />
+
+    <div class=" rounded-2 p-2 w-50">
+        <label asp-for="Price" >السعر</label>
+        <input asp-for="Price" class=" rounded-2 p-2 w-100"  placeholder=" مثال : 3500 EGP" />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Address">العنوان</label>
-        <input asp-for="Address" class="form-control" />
-        <span asp-validation-for="Address" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
+    <div class=" rounded-2 p-2 w-50">
         <label asp-for="RoomCount">عدد الغرف</label>
-        <input asp-for="RoomCount" class="form-control" />
+        <input asp-for="RoomCount" class=" rounded-2 p-2 w-100" />
         <span asp-validation-for="RoomCount" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+
+    <div class=" rounded-2 p-2 w-100">
+        <label asp-for="Address" >المنطقة </label>
+        <input asp-for="Address" class=" rounded-2 p-2 w-100" placeholder=" مثال : حي الجامعه - اسيوط " />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class=" rounded-2 p-2 w-100">
+        <label asp-for="PhoneNumper">رقم الهاتف </label>
+        <input asp-for="PhoneNumper" class=" rounded-2 p-2 w-100" />
+    </div>
+        <span asp-validation-for="PhoneNumper" class="text-danger"></span>
+
+    <div class=" rounded-2 p-2 w-100">
         <label asp-for="GenderType">النوع</label>
-        <select asp-for="GenderType" class="form-control" asp-items="Html.GetEnumSelectList<GenderType>()">
-            <option value="">اختر النوع</option>
+        <select asp-for="GenderType" class=" rounded-2 p-2 w-100" asp-items="Html.GetEnumSelectList<GenderType>()">
+            <option value="" hidden>اختر النوع</option>
         </select>
         <span asp-validation-for="GenderType" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+    <div class=" rounded-2 p-2 w-100">
         <label>صور الشقة</label>
-        <input type="file" name="NewImages" multiple class="form-control" />
+        <input type="file" name="NewImages" multiple class=" rounded-2 p-2 w-100" />
     </div>
 
-    <button type="submit" class="btn btn-primary">حفظ</button>
+    <div class=" rounded-2 p-2  d-flex justify-content-between  w-100 ">
+    <button type="submit" class="rounded-2 btn  btn-warning">حفظ</button>
     <a asp-action="Index" class="btn btn-secondary">رجوع</a>
+    </div>
 </form>
+
+</section>
+
+
+<div class="signture main-bg w-100 text-center m-0 p-3">
+            <p class="text-secondary">Copyright © 2025 Assiut Stay Co., Ltd. All Rights Reserved.</p>
+</div>
+
 
 @section Scripts {
     @{

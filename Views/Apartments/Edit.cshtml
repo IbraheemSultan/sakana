@@ -4,72 +4,92 @@
     ViewData["Title"] = "Edit Apartment";
 }
 
-<h2>Edit Apartment</h2>
+<link href="~/css/create.css" rel="stylesheet" />ء
 
-<form asp-action="Edit" enctype="multipart/form-data" method="post">
+<div class="head main-bg text-center pt-5 pb-4">
+        <h2 class="fw-bold main-color"> تعديل الشقة </h2>
+        <p class="placeholder-color">املأ البيانات لتعديل شقتك في قائمة الشقق المتاحة </p>
+    </div>
+
+    <section class="mt-5 mb-5 " >
+<form asp-action="Edit" enctype="multipart/form-data" method="post" class="hero d-flex flex-wrap p-3 main-bg rounded-4  m-auto ">
     <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <label asp-for="Title"></label>
-        <input asp-for="Title" class="form-control" />
+    <div class=" rounded-2 p-2 w-100">
+         <label asp-for="Title">عنوان الشقة</label>
+                
+        <input asp-for="Title" class="rounded-2 p-2 w-100" placeholder=" مثال : شقة فاخرة في الجامعه " />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Description"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
+    <div class=" rounded-2 p-2 w-100">
+        <label asp-for="Description">الوصف</label>
+        <textarea asp-for="Description" class=" rounded-2 p-2  w-100" cols="30" rows="5" placeholder=" ادخل تفاصيل الشقة... "></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Price"></label>
-        <input asp-for="Price" class="form-control" />
+    <div class=" rounded-2 p-2 w-50">
+        <label asp-for="Price" >السعر</label>
+        <input asp-for="Price" class=" rounded-2 p-2 w-100"  placeholder=" مثال : 3500 EGP" />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Address"></label>
-        <input asp-for="Address" class="form-control" />
-        <span asp-validation-for="Address" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="RoomCount"></label>
-        <input asp-for="RoomCount" class="form-control" />
+    <div class=" rounded-2 p-2 w-50">
+        <label asp-for="RoomCount">عدد الغرف</label>
+        <input asp-for="RoomCount" class=" rounded-2 p-2 w-100" />
         <span asp-validation-for="RoomCount" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="GenderType"></label>
-        <select asp-for="GenderType" asp-items="Html.GetEnumSelectList<GenderType>()" class="form-control"></select>
+    <div class=" rounded-2 p-2 w-100">
+        <label asp-for="Address" >المنطقة </label>
+        <input asp-for="Address" class=" rounded-2 p-2 w-100" placeholder=" مثال : حي الجامعه - اسيوط " />
+        <span asp-validation-for="Address" class="text-danger"></span>
     </div>
 
-    <hr />
-    <h4>Current Images</h4>
+
+    <div class=" rounded-2 p-2 w-100">
+        <label asp-for="GenderType"> النوع</label>
+        <select asp-for="GenderType" asp-items="Html.GetEnumSelectList<GenderType>()"  class=" rounded-2 p-2 w-100">
+
+        </select>
+    </div>
+
+    <div class=" rounded-2 p-2 w-100">
+    <h4> الصور الموجوده حاليا</h4>
     @if (Model.Images != null && Model.Images.Any())
     {
         <div class="row">
             @foreach (var img in Model.Images)
             {
                 <div class="col-md-3 text-center">
-                    <img src="@img.ImageUrl" class="img-thumbnail" style="max-height:150px;" />
-                    <div class="form-check">
+                    <img src="@img.ImageUrl" class="img-thumbnail  " style="height:100px;" />
+                    <div class="form-check text-center ">
                         <input class="form-check-input" type="checkbox" name="DeletedImageIds" value="@img.Id" id="deleteImg_@img.Id" />
-                        <label class="form-check-label" for="deleteImg_@img.Id">Delete</label>
+                        <label class="form-check-label" for="deleteImg_@img.Id">حذف</label>
                     </div>
                 </div>
             }
         </div>
     }
-
-    <hr />
-    <h4>Upload New Images</h4>
-    <div class="form-group">
-        <input type="file" name="NewImages" multiple class="form-control" />
+    </div>
+    
+    <div class=" rounded-2 p-2 w-100">
+    <label> ارفع صور جديدة</label>
+        <input type="file" name="NewImages" multiple  class=" rounded-2 p-2 w-100" />
     </div>
 
-    <br />
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    <div class=" rounded-2 p-2  d-flex justify-content-between  w-100 ">
+    <button type="submit" class="rounded-2 btn  btn-warning"> حفظ  التغيرات</button>
+    <a asp-action="Index" class="btn btn-secondary">رجوع</a>
+    </div>
+    
 </form>
+
+</section>
+
+<div class="signture main-bg w-100 text-center m-0 p-3">
+            <p class="text-secondary">Copyright © 2025 Assiut Stay Co., Ltd. All Rights Reserved.</p>
+</div>
+
 
 @section Scripts {
     @{
