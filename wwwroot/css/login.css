@@ -89,6 +89,7 @@ section {
         .phoneNumber input:focus,
         .nationalId input:focus {
             outline: none;
+            background-color: var(--bg-input);
         }
 
     .card form .form-control {
@@ -117,8 +118,7 @@ section {
     background-color: var(--bg-input) !important;
     border-radius: .5rem;
     margin-bottom: 1rem;
-    position:relative;
-    
+    position:relative; 
 }
 
 
@@ -127,12 +127,11 @@ section {
     .name i,
     .nationalId i,
     .phoneNumber i {
-        width: 20%;
+/*        width: 20%;*/
+font-size:1rem;
+padding : 0 1rem;
     }
 
-    .email i {
-        font-size: 1.5rem;
-    }
 
 .register-email i {
     font-size: 1rem;
@@ -167,13 +166,14 @@ section {
 
 
 /* Register */
-
-input:-webkit-autofill {
-    box-shadow: 0 0 0px 1000px rgb(113, 117, 129) inset !important;
-    -webkit-text-fill-color: #000 !important;
-    padding-right: .5rem !important;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--bg-input) inset !important;
+    -webkit-text-fill-color: white !important;
+    caret-color: white; /* لون المؤشر */
 }
-
 
 .phoneInput {
     direction: rtl;
@@ -191,6 +191,3 @@ input[type="password"]::-webkit-clear-button {
 }
 
 
-input::placeholder{
-    color:blue;
-}
